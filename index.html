@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Free Cages</title>
+  <link href="dist/main.css" rel="stylesheet">
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5NVWG87');</script>
+  <!-- End Google Tag Manager -->
+</head>
+
+<body class="gradient-bg">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5NVWG87" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div id="loader-screen" class="modal gradient-bg info --show --cover">
+    <div class="modal__container">
+      <h1 class="modal__title">Free Cage</h1>
+      <p class="modal__body">Starting</p>
+      <div class="progress-bar">
+        <div class="progress-bar__indicator"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="bell-param-selector">
+    <div class="parameters-selector --bell">
+      <h2><span>bell parameters</span></h2>
+      <div class="button-close --d-block" id="closeParameterBell">
+        <svg viewBox="0 0 50 50" width="50px" height="50px">
+          <path
+            d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z " />
+        </svg>
+      </div>
+      <ul>
+        <li>
+          <input type="radio" name="bellParameter" value="0" id="bellIntensity">
+          <label for="bellIntensity">Intensity</label>
+        </li>
+        <li>
+          <input type="radio" name="bellParameter" value="1" id="bellColour">
+          <label for="bellColour">Colour</label>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="modal" id="table-param-selector">
+    <div class="parameters-selector --table">
+      <h2>Table parameters</h2>
+      <div class="button-close --d-block" id="closeParameterTable">
+        <svg viewBox="0 0 50 50" width="50px" height="50px">
+          <path
+            d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z " />
+        </svg>
+      </div>
+      <ul>
+        <li>
+          <input type="radio" name="tableParameter" value="0" id="tableIntensity">
+          <label for="tableIntensity">Intensity</label>
+        </li>
+        <li>
+          <input type="radio" name="tableParameter" value="1" id="tableColour">
+          <label for="tableColour">Colour</label>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="modal" id="virtualObj-param-selector">
+    <div class="parameters-selector --virtual-obj">
+      <h2>Virtual parameters</h2>
+      <div class="button-close --d-block" id="closeParameterVirtual">
+        <svg viewBox="0 0 50 50" width="50px" height="50px">
+          <path
+            d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z " />
+        </svg>
+      </div>
+      <ul>
+        <li>
+          <input type="radio" name="virtualObjParameter" value="0" id="virtualObjIntensity">
+          <label for="virtualObjIntensity">Intensity</label>
+        </li>
+        <li>
+          <input type="radio" name="virtualObjParameter" value="1" id="virtualObjColour">
+          <label for="virtualObjColour">Colour</label>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="exitCage" class="button --exit">Move in the space</div>
+  <div id="navigationControls" class="nav-controls">
+    <div class="nav-controls__row">
+      <div class="nav-controls__btn" id="moveLeftBtn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24">
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" /></svg></div>
+      <div class="nav-controls__btn" id="moveForwardBtn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24">
+          <path fill="none" d="M0 0h24v24H0V0z" />
+          <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" /></svg></div>
+      <div class="nav-controls__btn" id="moveRightBtn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24">
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" /></svg></div>
+    </div>
+    <div class="nav-controls__row">
+      <div class="nav-controls__btn" id="moveBackwardBtn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24">
+          <path fill="none" d="M0 0h24v24H0V0z" />
+          <path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z" /></svg></div>
+    </div>
+  </div>
+
+  <!-- <div id="console">
+    <div id="x"></div>
+    <div id="y"></div>
+    <div id="intersect"></div>
+  </div> -->
+
+  <header id="app-header">
+    <h1>Free Cage</h1>
+    <button class="burger" id="menuBtn"></button>
+  </header>
+  <div id="app-container"></div>
+
+  <div id="overlay" class="close">
+    <div id="menu">
+      <div class="menu-body">
+        <div class="menu--titles" id="about">About Free Cage</div>
+        <div class="menu--titles" id="team">Team</div>
+      </div>
+    </div>
+    <div class="button-close" id="closeStatic"><svg viewBox="0 0 50 50" width="50px" height="50px">
+        <path fill="#666666"
+          d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z " />
+      </svg>
+    </div>
+    <div id="static-content">
+      <div class="menu--content" id="about--content">
+        <h2>About Free Cage</h2>
+
+        <h3>FUTURE SCENARIO</h3>
+
+        <p>Technologies like the Internet of Things, artificial intelligence and augmented reality prefigure a future in
+          which the identity of objects, as well as their mutual interaction and control, will be increasingly
+          fragmented between the real and the virtual.</p>
+
+        <p>In the future every object will be less and less the single material entity and more and more the system of
+          functions and interactions that it will develop with all the other objects that surround it.</p>
+
+        <p>Today we use tablet and mobile to access the world of information, but tomorrow every object will be a door
+          to access a virtual dimension with which it will interact; furthermore, each object will be potentially usable
+          as a tool for automatically interacting with other objects, collecting data, exchanging them reciprocally and
+          automatically creating interactions and actions with things, people and ecosystems. Each object will modify
+          the other objects according to its parameters and the variation of its characteristics will automatically
+          change the physical state of the other interconnected objects.</p>
+
+        <p>Every real object will be like the knot of a great net that will envelop us really and virtually and the
+          matter of things will be only a condensed point of a great vibration of things, sounds, lights, data,
+          materials, words...</p>
+
+        <p>And this great network will immediately show itself in its twofold great and critical aspect: it will be
+          freedom and it will be imprisonment.</p>
+
+        <h3>FREE CAGE</h3>
+
+        <h4>FREEDOM OR IMPRISONMENT? A PROJECT BETWEEN REALITY AND VIRTUALITY</h4>
+
+        <p>Free cage is a project that aims to represent the ambiguity of the current and future condition described in
+          the aforementioned “Future Scenario”.</p>
+
+        <p>It does not want to give answers but only to stage the questions and doubts in front of the observer.</p>
+
+        <p>The oxymoron "free cage" wants to represent the duplicity of our dependendant relationship with the network
+          of objects that surrounds us, which will be more and more interconnected with our life. We will possess and be
+          possessed by objects. More and more.</p>
+
+        <p>We will be their masters and we will be their slaves, it will depend only on the point of view.</p>
+
+        <p>We, sailors and prisoners, will be increasingly caught up in this vast network of tangible and intangible
+          entities. We will be more and more inside a prison with open cages, and we will be like those birds that no
+          longer flee from their cage even the doors are open.</p>
+
+        <p>We will be at the same time both the wolf and the dog of Aesop's fable, without knowing which of the two
+          identities we will be interpreting with our choices.</p>
+
+        <p>Where is freedom? Where is the prison? Where is the matter? Where is transcendence? Which song will we sing?
+          The power or frustration? The escape or the return?</p>
+
+        <p>Free cage is an installation that, like the objects of the future, develops itself between two worlds in
+          reciproc relation: the “material world”,that we call REALITY, inhabited by our bodies, and the “computational
+          world”, that we call VIRTUALITY, increasingly inhabited by our perception.</p>
+      </div>
+      <div class="menu--content" id="biennale--content">
+        <h2>Experience Free Cage</h2>
+        <p>If you happen to be at the Thessaloniki Biennale, please follow the below instructions to experience Free
+          Cage in its full.</p>
+      </div>
+      <div class="menu--content" id="team--content">
+        <h2>Team</h2>
+
+        <h3>Roberto Rota</h3>
+        <h6>Designer of the objects and the concepts</h6>
+        <a href="mailto:contact@aterote.com">contact@aterote.com</a>
+        <a href="http://www.aterote.com/">www.aterote.com</a>
+
+        <h3>Andrea Lopez</h3>
+        <h6>Hardware engineer</h6>
+        <a href="mailto:andrea80lc@gmail.com">andrea80lc@gmail.com</a>
+
+        <h3>Angeliki Panagiotopoulou</h3>
+        <h6>Spatial Designer</h6>
+        <a href="mailto:ang.panagiotopoulou@gmail.com">ang.panagiotopoulou@gmail.com</a>
+
+        <h3>Dave Mandujano</h3>
+        <h6>Software and Hardware architect</h6>
+        <a href="mailto:david@noloc.it">david@noloc.it</a>
+
+        <h3>Fabio Valle</h3>
+        <h6>3D Virtual World engineer</h6>
+        <a href="mailto:fabio.valle@gmail.com">fabio.valle@gmail.com</a>
+
+        <h3>Thodoris Panagiotopoulos</h3>
+        <h6>Object Manufacturer</h6>
+        <a href="mailto:panagiotopoulos_t@hotmail.com">panagiotopoulos_t@hotmail.com</a>
+        <a href="http://www.housesistema.gr">www.housesistema.gr</a>
+      </div>
+      <!-- <div class="menu--content" id="contacts--content">
+        <h2>Contacts</h2>
+      </div> -->
+    </div>
+  </div>
+
+  <script src="js/three.js" type="text/javascript"></script>
+  <script src="js/OrbitControls.js"></script>
+  <script src="js/PointerLockControls.js"></script>
+  <script src="js/DRACOLoader.js" type="text/javascript"></script>
+  <script src='js/draco_decoder.js'></script>
+  <script src="dist/bundle.js" type="text/javascript"></script>
+</body>
+
+</html>
